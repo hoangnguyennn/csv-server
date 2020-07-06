@@ -19,7 +19,7 @@ Start csv-server
 
 Now, go to http://localhost:3000/books or http://localhost:3000/users to see result.
 
-Current, only support `GET` request.
+Currently, only support `GET` requests.
 
 ## CLI Option
 
