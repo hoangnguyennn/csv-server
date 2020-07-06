@@ -1,6 +1,5 @@
-const router = require("express").Router();
-
 module.exports = (subject, db) => {
+  const router = require("express").Router();
   router.get("/", (req, res) => {
     return res.json(db.get(subject).value());
   });
