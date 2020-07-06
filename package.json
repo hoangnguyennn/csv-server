@@ -4,6 +4,9 @@
   "description": "",
   "main": "bin/cli/bin.js",
   "scripts": {
+    "start": "csv-server ./data",
+    "lint": "./node_modules/.bin/eslint .",
+    "fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,5 +20,11 @@
   },
   "bin": {
     "csv-server": "./bin/cli/bin.js"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
   }
 }
