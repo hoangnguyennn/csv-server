@@ -1,8 +1,10 @@
-const fs = require("fs");
-const server = require("../server");
-const getFilesFromDir = require("./utils/getFilesFromDir");
-const readFiles = require("./utils/readFiles");
-const MyDB = require("./utils/myDB");
+const fs = require('fs');
+
+const getFilesFromDir = require('../utils/getFilesFromDir');
+const readCsvFiles = require('../utils/readCsvFiles');
+const server = require('../server');
+const MyDB = require('../db');
+const home = require('../template/home');
 
 module.exports = (argv) => {
   const source = argv._[0];
@@ -17,22 +19,26 @@ module.exports = (argv) => {
     process.exit(2);
   }
 
+  const { port } = argv;
+
   const start = async () => {
-    const { fileList, subjects } = getFilesFromDir(source);
-    const data = await readFiles({ fileList, subjects });
+    const { filesPath, models } = getFilesFromDir(source);
+    const data = await readCsvFiles(filesPath, models);
     const db = new MyDB(data, source);
 
     const app = server.create();
 
-    app.get("/", (req, res) => res.send("hello"));
+    app.get('/', (req, res) => res.send(home(models, port)));
 
-    Object.keys(data).map((key) => {
-      app.use(`/${key}`, server.route(key, db));
+    Object.keys(data).forEach((model) => {
+      app.use(`/${model}`, server.route(db, model));
     });
 
-    app.listen(argv.port, () =>
-      console.log(`App running on port ${argv.port}`)
-    );
+    app.listen(port, () => {
+      console.log(
+        `started server on 0.0.0.0:${port}, url: http://localhost:${port}`,
+      );
+    });
   };
 
   start();
