@@ -18,6 +18,17 @@ const route = (db, model) => {
     return res.status(404).json({ message: 'Not found' });
   });
 
+  router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    const result = db.get(model).deleteOne({ id });
+
+    if (!result) {
+      return res.status(404).json({ message: 'Not found' });
+    }
+
+    return res.json({ message: 'Deleted' });
+  });
+
   return router;
 };
 

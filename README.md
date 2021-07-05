@@ -20,7 +20,7 @@ $  csv-server ./data --port=3000
 
 Now, go to http://localhost:3000/books or http://localhost:3000/users to see result.
 
-Currently, only support `GET` requests.
+Currently, only `GET` and `DELETE` requests are supported.
 
 ## CLI Option
 
