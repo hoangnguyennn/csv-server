@@ -5,6 +5,8 @@
   "main": "bin/cli/bin.js",
   "scripts": {
     "test": "csv-server ./data",
+    "prettier": "npx prettier bin --check",
+    "prettier:fix": "yarn prettier --write",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
@@ -25,11 +27,12 @@
   "dependencies": {
     "csv-parser": "3.0.0",
     "csv-writer": "1.6.0",
-    "express": "4.17.1",
-    "yargs": "17.0.1"
+    "express": "4.18.2",
+    "yargs": "17.6.2"
   },
   "devDependencies": {
-    "eslint": "7.31.0",
-    "eslint-config-prettier": "8.3.0"
+    "eslint": "8.31.0",
+    "eslint-config-prettier": "8.6.0",
+    "prettier": "2.8.1"
   }
 }

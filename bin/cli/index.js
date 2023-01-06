@@ -1,5 +1,5 @@
-const yargs = require('yargs');
-const run = require('./run');
+const yargs = require('yargs')
+const run = require('./run')
 
 module.exports = () => {
   const argv = yargs
@@ -8,11 +8,11 @@ module.exports = () => {
     .options({
       port: {
         alias: 'p',
-        description: 'Set port',
-        default: 3000,
-      },
+        description: 'Set server port',
+        default: 3000
+      }
     })
-    .require(1, 'Missing <source> argument').argv;
+    .require(1, 'Missing <source> argument').argv
 
-  run(argv);
-};
+  run(argv)
+}

@@ -1,12 +1,12 @@
-const express = require('express');
+const express = require('express')
 
 const create = () => {
-  const app = express();
+  const app = express()
 
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: true }))
 
-  return app;
-};
+  return app
+}
 
-module.exports = create;
+module.exports = create

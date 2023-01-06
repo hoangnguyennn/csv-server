@@ -1,4 +1,4 @@
-const create = require('./create');
-const route = require('./route');
+const create = require('./create')
+const route = require('./route')
 
-module.exports = { create, route };
+module.exports = { create, route }
